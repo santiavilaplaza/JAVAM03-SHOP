@@ -1,30 +1,35 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.time.LocalDateTime;
 
 public class Sale {
-	String client;
-	Product[] products;
+	private Client client;
+//	Product[] products;
+	private ArrayList<Product> products;
 	double amount;
+	String dateTime;
 	
 	
-	public Sale(String client, Product[] products, double amount) {
+	public Sale(Client client, ArrayList<Product> products, double amount, String dateTime) {
 		super();
 		this.client = client;
 		this.products = products;
 		this.amount = amount;
+		this.dateTime = dateTime;
 	}
 	
-	public String getClient() {
+	public Client getClient() {
 		return client;
 	}
-	public void setClient(String client) {
+	public void setClient(Client client) {
 		this.client = client;
 	}
-	public Product[] getProducts() {
+	public ArrayList<Product> getProducts() {
 		return products;
 	}
-	public void setProducts(Product[] products) {
+	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
 	public double getAmount() {
@@ -33,14 +38,17 @@ public class Sale {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+	
+	public String getDateTime() {
+		return dateTime;
+	}
+	
+	public void setAmount(String dateTime) {
+		this.dateTime = dateTime;
+	}
 
 	@Override
 	public String toString() {
-		return "Sale [client=" + client + ", products=" + Arrays.toString(products) + ", amount=" + amount + "]";
+		return "Sale \nClient: " + client + ", \nProducts: " + products.toString() + ", \nAmount: " + amount + " \nDate: " + dateTime;
 	}
-	
-	
-	
-	
-
 }

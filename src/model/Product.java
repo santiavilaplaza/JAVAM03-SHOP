@@ -16,6 +16,7 @@ public class Product {
 		this.id = totalProducts+1;
 		this.name = name;
 		this.wholesalerPrice = wholesalerPrice;
+		this.publicPrice = wholesalerPrice * 2;
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
@@ -80,10 +81,12 @@ public class Product {
 	public void expire() {
 		this.publicPrice = this.getPublicPrice()*EXPIRATION_RATE;
 	}
-	
-	
 
-    
-
+	@Override
+	public String toString() {
+		return "ID: " + id + " | Nombre: " + name + " | Precio: " + publicPrice
+				+ " | PrecioMayorista: " + wholesalerPrice + " | Disponibilidad:"
+				+ " " + available + " | Stock: " + stock;
+	}	
     
 }
