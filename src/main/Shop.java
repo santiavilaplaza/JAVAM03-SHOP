@@ -15,7 +15,7 @@ import java.io.FileWriter;   // Import the FileWriter class
 import java.io.IOException;
 
 public class Shop {
-	private double cash = 100.00;
+	public double cash = 100.00;
 //	private Product[] inventory;	
 	private ArrayList<Product> inventory;
 	private int numberProducts;
@@ -32,6 +32,8 @@ public class Shop {
 		inventory = new ArrayList<Product>();
 		sales = new ArrayList<Sale>();
 	}
+	
+	
 
 	public static void main(String[] args) {
 		Shop shop = new Shop();
@@ -156,8 +158,8 @@ public class Shop {
 		System.out.print("Stock: ");
 		int stock = scanner.nextInt();
 
-//		addProduct(new Product(name, wholesalerPrice, true, stock));
-		inventory.add(new Product(name, wholesalerPrice, true, stock));
+		addProduct(new Product(name, wholesalerPrice, true, stock));
+		
 
 	}
 
@@ -461,7 +463,7 @@ public class Shop {
 	 */
 	public void addProduct(Product product) {
 //		inventory[numberProducts] = product;
-		inventory.set(numberProducts, product);
+		inventory.add(product);
 		numberProducts++;
 	}
 
@@ -487,4 +489,53 @@ public class Shop {
 
 	}
 
+
+
+	public double getCash() {
+		return cash;
+	}
+
+
+
+	public void setCash(double cash) {
+		this.cash = cash;
+	}
+
+
+
+	public ArrayList<Product> getInventory() {
+		return inventory;
+	}
+
+
+
+	public void setInventory(ArrayList<Product> inventory) {
+		this.inventory = inventory;
+	}
+
+
+
+	public int getNumberProducts() {
+		return numberProducts;
+	}
+
+
+
+	public void setNumberProducts(int numberProducts) {
+		this.numberProducts = numberProducts;
+	}
+
+
+
+	public ArrayList<Sale> getSales() {
+		return sales;
+	}
+
+
+
+	public void setSales(ArrayList<Sale> sales) {
+		this.sales = sales;
+	}
+	
+	
 }

@@ -5,14 +5,16 @@ import main.Logable;
 public class Employee extends Person implements Logable{
 	
 	private int employeeId;
-	private int USER;
-	private String PASSWORD;
+	private int user;
+	private String password;
+	public static final int USER = 123;
+	public static final String PASSWORD = "test";	
 	
-	public Employee( int employeeId, int USER, String PASSWORD) {
+	public Employee( int employeeId, int user, String password) {
 		super("test");
 		this.employeeId = employeeId;
-		this.USER = USER;
-		this.PASSWORD = PASSWORD;
+		this.user = user;
+		this.password = password;
 	}
 	
 	public void setEmployeeId(int employeeID) {
@@ -23,24 +25,24 @@ public class Employee extends Person implements Logable{
 		return employeeId;
 	}
 	
-	public void setUSER(int USER) {
-		this.USER = USER;
+	public void setUser(int user) {
+		this.user = user;
 	}
 	
-	public int getUSER() {
-		return USER;
+	public int getUser() {
+		return user;
 	}
 	
-	public void setPASSWORD(String PASSWORD) {
-		this.PASSWORD = PASSWORD;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
-	public String getPASSWORD() {
-		return PASSWORD;
+	public String getPassword() {
+		return password;
 	}
 	
-	public boolean login(int USER, String PASSWORD) {
-		if (USER == 123 && PASSWORD.equals("test")) {
+	public boolean login(int user, String password) {
+		if (user == USER && password.equals(PASSWORD)) {
 				return true;
 		} else {
 			return false;
