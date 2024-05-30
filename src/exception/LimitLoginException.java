@@ -9,6 +9,6 @@ public class LimitLoginException extends Exception{
 	}
 	
 	public String toString() {
-		return "Ha superado el limite de " + this.counter + " permitidos";
+		return "Ha superado el limite de " + this.counter + " intentos";
 	}
 }

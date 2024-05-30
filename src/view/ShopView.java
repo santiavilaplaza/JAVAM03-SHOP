@@ -28,23 +28,6 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 	public Shop shop;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ShopView frame = new ShopView();
-					frame.setVisible(true);
-					frame.setTitle("Shop");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public ShopView() {

@@ -39,7 +39,7 @@ public class ProductView extends JDialog implements ActionListener{
 		this.mode = mode;
 		
 		
-		if (mode == Constants.OPTION_ADD_STOCK) {
+		if (mode == Constants.OPTION_ADD_PRODUCT) {
 			setTitle("Añadir Producto");
 
 		}

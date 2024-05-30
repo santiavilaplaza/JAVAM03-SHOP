@@ -100,7 +100,7 @@ public class LoginView extends JFrame implements ActionListener{
 	        	return; 
 	        }
 			
-			Employee employee = new Employee(1, numEmployee, password);
+			Employee employee = new Employee(numEmployee, password);
 			boolean loginSuccesful = employee.login(numEmployee, password);
 			
 			
@@ -108,10 +108,11 @@ public class LoginView extends JFrame implements ActionListener{
 			    ShopView shopView = new ShopView();
 
 				shopView.setVisible(true);
-			    
+							    
 			    dispose();
 			} else {
-				JOptionPane.showMessageDialog(this, "Usario o password incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Usuario o password incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+				clearForm();
 	        	numErrores ++;
 	        	System.out.println(numErrores);
 	        	if (numErrores >= Constants.MAX_LOGIN_TIMES) {
@@ -125,5 +126,10 @@ public class LoginView extends JFrame implements ActionListener{
 			}
 		}
 	}
+	
+	private void clearForm() {
+        textNumEmployee.setText("");
+        textPassword.setText("");
+    }
 		
 }

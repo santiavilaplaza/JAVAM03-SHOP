@@ -419,7 +419,7 @@ public class Shop {
 			System.out.println("Introduzca contraseña");
 			String passwordEmployee = inputKeyboard.next();
 			
-			Employee employee = new Employee(1, numEmployee, passwordEmployee);
+			Employee employee = new Employee(numEmployee, passwordEmployee);
 			boolean login = employee.login(numEmployee, passwordEmployee);
 			
 			if (login) {
