@@ -13,11 +13,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;   // Import the FileWriter class
 import java.io.IOException;
+import java.nio.Buffer;
 
 public class Shop {
 	public double cash = 100.00;
 //	private Product[] inventory;	
-	private ArrayList<Product> inventory;
+	private static ArrayList<Product> inventory;
 	private int numberProducts;
 //	private Sale[] sales;
 	private ArrayList<Sale> sales;
@@ -39,6 +40,8 @@ public class Shop {
 		Shop shop = new Shop();
 
 		shop.loadInventory();
+		
+
 
 		Scanner scanner = new Scanner(System.in);
 		int opcion = 0;
@@ -110,32 +113,56 @@ public class Shop {
 //		inventory.add(new Product("Hamburguesa", 30.00, true, 30));
 //		inventory.add(new Product("Fresa", 5.00, true, 20));	
 		
+		File f = new File(System.getProperty("user.dir") + File.separator + "files/inputInventory.txt");
+		
 		try {
-			File defaultProducts = new File("C:\\Users\\santi\\eclipse-workspace\\UF3P1_ShopV2\\files\\inputInventory.txt");
-		    if (defaultProducts.canRead()) {
-			    	FileReader newFichero = new FileReader(defaultProducts);
-			    	BufferedReader newFichero2 = new BufferedReader(newFichero);
-		    	String linea = newFichero2.readLine();
-		    	while (linea != null) {
-					String[] parts = linea.split(";");
-					
-					if (parts.length == 3) {
-						String productName = parts[0].split(":")[1].trim();
-						Double wholesalerPrice = Double.parseDouble( parts[1].split(":")[1].trim());
-						int stock = Integer.parseInt(parts[2].split(":")[1].trim());
-
-						inventory.add(new Product(productName, wholesalerPrice, true, stock));
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			
+			String line = br.readLine();
+			
+			while (line != null) {
+				String [] data = line.split(",");
+				
+				Product producto = new Product();
+				
+				for (int i = 0; i < data.length; i++) {
+					switch (i) {
+					case 0: 
+						producto.setName(data[0]);
+						break;
+					case 1:
+						producto.setWholesalerPrice(Double.parseDouble(data[1]));
+						break;
+					case 2: 
+						producto.setStock(Integer.parseInt(data[2]));
+						break;
+					case 3:
+						boolean value = false;
 						
-					} else {
-						System.out.println("Invalid format");
+						if ("disponible".equalsIgnoreCase(data[3])) {
+							value = true;
+						}
+						
+						producto.setAvailable(value);
+						break;
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + i);
 					}
-					
-					linea = newFichero2.readLine();
 				}
-		    }
+				
+				inventory.add(producto);
+				
+				line = br.readLine();
+			}
+			
+			fr.close();
+			br.close();
+			
 		} catch (Exception e) {
-			System.out.println("Ha habido algun problema con el fichero");
+			// TODO: handle exception
 		}
+		    
 		
 	}
 
@@ -209,10 +236,14 @@ public class Shop {
 	public void showInventory() {
 		System.out.println("Contenido actual de la tienda:");
 				
-		for (int i = 0; i < inventory.size(); i++) {
-			if (inventory.get(i) != null) {
-				System.out.println(inventory.get(i));
-			}
+//		for (int i = 0; i < inventory.size(); i++) {
+//			if (inventory.get(i) == null) {
+//				System.out.println(inventory.get(i));
+//			}
+//		}
+		
+		for (Product producto : inventory) {
+			System.out.println(producto);
 		}
 		
 		

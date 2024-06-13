@@ -11,6 +11,10 @@ public class Product {
     
     static double EXPIRATION_RATE=0.60;
     
+    public Product() {
+    	super();
+    }
+    
 	public Product(String name, double wholesalerPrice, boolean available, int stock) {
 		super();
 		this.id = totalProducts+1;

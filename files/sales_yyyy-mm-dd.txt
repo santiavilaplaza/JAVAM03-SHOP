@@ -1,5 +1,0 @@
-Sale 
-Client: santi, 
-Products: [ID: 4 | Nombre: Fresa | Precio: 10.0 | PrecioMayorista: 5.0 | Disponibilidad: true | Stock: 19, ID: 1 | Nombre: Manzana | Precio: 20.0 | PrecioMayorista: 10.0 | Disponibilidad: true | Stock: 9], 
-Amount: 31.200000000000003 
-Date: 01-04-2024 22:17:04
